@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Festessen-Helfer – Gans, Raclette, Fondue: Mengen und Zeitplan für Weihnachten und Silvester</title>
+<meta name="description" content="Wie groß muss die Gans sein und wann muss sie in den Ofen? Wie viel Käse für Raclette, wie viel Fleisch fürs Fondue, wie viel Kartoffelsalat? Einkaufszettel und Zeitplan mit Uhrzeiten – kostenlos, ohne Anmeldung.">
+<style>
+:root{--bg:#f7f4ef;--card:#fff;--ink:#1e1b18;--muted:#68625a;--line:#e5dfd6;--soft:#f0ebe3;
+--accent:#a3262a;--accent-ink:#fff;--accent-soft:#f7e4e2;--ok:#2d6e3a;--ok-soft:#e3f0e4;--warn:#9a5a00;--warn-soft:#fbefd9}
+@media (prefers-color-scheme:dark){:root{--bg:#141210;--card:#1f1c19;--ink:#efebe6;--muted:#a8a199;--line:#38332e;--soft:#2a2622;
+--accent:#f08a86;--accent-ink:#2a0806;--accent-soft:#3a1d1c;--ok:#86c98f;--ok-soft:#1d321f;--warn:#e8b15d;--warn-soft:#382c17}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:560px;margin:0 auto;padding:18px 16px 60px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px}
+.brand{font-weight:700;font-size:1.05rem;display:flex;align-items:center;gap:6px;cursor:pointer;background:none;border:0;color:var(--ink);font-family:inherit;padding:0}
+.brand span{font-size:1.25rem}
+.back{background:none;border:0;color:var(--accent);font:inherit;font-weight:600;cursor:pointer;padding:6px 0}
+h1{font-size:1.6rem;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em}
+h2{font-size:1.35rem;line-height:1.25;margin:0 0 14px}
+.sub{color:var(--muted);margin:0 0 20px}
+.step{font-size:.85rem;color:var(--muted);margin:14px 0 6px}
+.qlist{display:flex;flex-direction:column;gap:10px}
+.q{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;font:inherit;color:inherit;cursor:pointer;text-decoration:none}
+.q:active,.pill:active,.card:active{transform:scale(.98)}
+.q .ic{flex:0 0 46px;height:46px;border-radius:12px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+.q b{display:block;font-size:1.05rem}
+.q span{display:block;color:var(--muted);font-size:.88rem}
+.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+@media (max-width:420px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:78px;padding:8px 4px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:14px;font:inherit;font-size:.85rem;line-height:1.2;color:inherit;cursor:pointer}
+.card .e{font-size:1.6rem;line-height:1}
+.card.on{border:2px solid var(--accent);background:var(--accent-soft)}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 15px;font:inherit;font-size:.93rem;cursor:pointer;min-height:44px}
+.pill.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.slider{margin:10px 0 2px}
+input[type=range]{width:100%;accent-color:var(--accent);height:32px}
+.sl-head{display:flex;justify-content:space-between;align-items:baseline}
+.sl-head .step{margin:0}
+.sl-val{font-size:1.2rem;font-weight:700}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.field{display:block}
+.field span{display:block;font-size:.82rem;color:var(--muted);margin-bottom:4px}
+input[type=number],input[type=time],input[type=date],select{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;height:48px;width:100%}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.answer{margin-top:20px;border-radius:18px;padding:18px;background:var(--accent-soft)}
+.answer.ok{background:var(--ok-soft)}.answer.warn{background:var(--warn-soft)}
+.answer .lbl{font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.answer .say{font-size:1.28rem;font-weight:700;line-height:1.3;margin:6px 0 8px}
+.answer .more{font-size:.95rem}
+.list{margin:12px 0 0;padding:0;list-style:none;border-top:1px solid color-mix(in srgb,var(--ink) 12%,transparent)}
+.list li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 12%,transparent);font-size:.95rem}
+.list li b{white-space:nowrap}
+.plan{margin:12px 0 0;padding:0;list-style:none}
+.plan li{display:grid;grid-template-columns:5.6em 1fr;gap:10px;padding:7px 0;border-bottom:1px dashed color-mix(in srgb,var(--ink) 15%,transparent);font-size:.95rem}
+.plan li .t{font-weight:700;font-variant-numeric:tabular-nums}
+.plan li .t small{display:block;font-weight:400;color:var(--muted);font-size:.78rem}
+.plan li.hl{background:color-mix(in srgb,var(--accent) 10%,transparent);border-radius:8px;padding-left:6px}
+.h3{font-weight:700;margin:16px 0 0;font-size:1rem}
+.tips{margin:10px 0 0;padding-left:20px;font-size:.92rem}
+.tips li{margin:4px 0}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.btn{border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);border-radius:12px;padding:11px 16px;font:inherit;font-weight:600;cursor:pointer;min-height:46px}
+.btn.ghost{background:transparent;color:var(--accent)}
+.msg{font-size:.88rem;color:var(--ok);align-self:center}
+.formula{font-size:.83rem;color:var(--muted);margin-top:12px;line-height:1.45}
+.hint{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+details.fine{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+details.fine summary{cursor:pointer;color:var(--accent);font-weight:600}
+.hide{display:none!important}
+footer{margin-top:28px;font-size:.8rem;color:var(--muted);text-align:center;line-height:1.5}
+footer a{color:var(--accent)}
+</style>
+<script data-goatcounter="https://schrauberbits.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <button class="brand" id="home" aria-label="Zur Startseite"><span>🍽️</span>Festessen-Helfer</button>
+    <button class="back hide" id="back">← Andere Frage</button>
+  </div>
+  <main id="app"></main>
+  <footer>Richtwerte aus gängigen Küchen-Faustregeln, ohne Gewähr. Entscheidend für Geflügel und Braten ist die Kerntemperatur – ein Bratenthermometer kostet wenige Euro.<br>Kostenlos, ohne Anmeldung, ohne Werbung – ein Hobbyprojekt, mit KI-Hilfe erstellt.<br>Mehr Helfer: <a href="https://schrauberbits.github.io/watt-helfer/">Watt-Helfer</a> · <a href="https://schrauberbits.github.io/heiz-helfer/">Heiz-Helfer</a> · <a href="https://schrauberbits.github.io/pc-helfer/">PC-Helfer</a></footer>
+</div>
+
+<script>
+// ================= Grundlagen =================
+const app=document.getElementById('app');
+const fmt=(n,d=0)=>Number(n).toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:d});
+const num=v=>{const n=parseFloat(String(v).replace(',','.'));return isFinite(n)?n:0};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+const gramm=g=>g>=1000?fmt(Math.round(g/50)*50/1000,g>=10000?1:2).replace(/,?0+$/,'')+' kg':fmt(Math.round(g/10)*10)+' g';
+const kg=k=>fmt(k,Number.isInteger(k)?0:1)+' kg';
+const dauer=min=>{min=Math.round(min/5)*5;const h=Math.floor(min/60),m=min%60;return h?(h+' Std.'+(m?' '+m+' Min.':'')):m+' Min.'};
+const TAGE=['So','Mo','Di','Mi','Do','Fr','Sa'];
+const uhr=d=>String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+const tagTxt=d=>TAGE[d.getDay()]+' '+d.getDate()+'.'+(d.getMonth()+1)+'.';
+
+// ---------- Zählen: ein Ereignis, sobald der Besucher selbst einen Wert ändert ----------
+const REF=((new URLSearchParams(location.search).get('ref')||'ohne').replace(/[^a-z0-9_-]/gi,'').slice(0,40))||'ohne';
+let genutzt=false;
+function senden(path,title,versuch){
+  try{ if(window.goatcounter&&window.goatcounter.count){ window.goatcounter.count({path,title,event:true}); return; } }catch(e){ return; }
+  if(versuch<40) setTimeout(()=>senden(path,title,versuch+1),250);
+}
+function nutzung(e){
+  if(genutzt||!e.isTrusted) return;
+  const t=e.target; if(!(t instanceof Element)) return;
+  if(!(t.matches('input,select')||t.closest('.pill,.card'))) return;
+  genutzt=true; senden('fest-nutzung--'+REF,'Festessen-Helfer: Wert geändert ('+REF+')',0);
+}
+['input','change','click'].forEach(ev=>app.addEventListener(ev,nutzung,true));
+
+// ---------- Werte über den Hash: #bereich?wert=… ----------
+function hashTeile(){ const h=location.hash.slice(1), i=h.indexOf('?'); return {seite:i<0?h:h.slice(0,i), p:new URLSearchParams(i<0?'':h.slice(i+1))}; }
+const STANDARD=new Map();
+function vorbelegen(S,p){ if(!STANDARD.has(S)) STANDARD.set(S,Object.assign({},S));
+  if([...p.keys()].some(k=>k in S)) Object.assign(S,STANDARD.get(S)); // Link mit Werten: zuerst auf Standard zurück
+  for(const k of Object.keys(S)){ if(!p.has(k)) continue; const v=p.get(k); S[k]=typeof S[k]==='number'?num(v):v; } }
+function hashSetzen(seite,S){ const q=new URLSearchParams(); for(const [k,v] of Object.entries(S)) q.set(k,v); history.replaceState(null,'',location.pathname+location.search+'#'+seite+'?'+q.toString()); }
+function teilLink(seite,S){ const q=new URLSearchParams(); for(const [k,v] of Object.entries(S)) q.set(k,v); return location.origin+location.pathname+'?ref=geteilt#'+seite+'?'+q.toString(); }
+
+// ---------- Bausteine ----------
+const h=html=>{app.innerHTML=html;window.scrollTo(0,0)};
+const pills=(id,list,sel)=>`<div class="pills" id="${id}">${list.map(p=>`<button class="pill${String(p[0])===String(sel)?' on':''}" data-v="${p[0]}">${p[1]}</button>`).join('')}</div>`;
+function pillGroup(id,cb){document.getElementById(id).addEventListener('click',e=>{const b=e.target.closest('.pill');if(!b)return;b.parentElement.querySelectorAll('.pill').forEach(x=>x.classList.toggle('on',x===b));cb(b.dataset.v);});}
+const slider=(id,label,min,max,step,val)=>`<div class="slider"><div class="sl-head"><span class="step">${label}</span><span class="sl-val" id="${id}v"></span></div><input type="range" id="${id}" min="${min}" max="${max}" step="${step}" value="${val}" aria-label="${label}"></div>`;
+const liste=rows=>`<ul class="list">${rows.map(r=>`<li><span>${r[0]}</span><b>${r[1]}</b></li>`).join('')}</ul>`;
+function antwortBox(cls,label,say,more,inhalt,tips,copyText,formel){
+  return `<div class="answer ${cls}"><div class="lbl">${label}</div><div class="say">${say}</div>${more?`<div class="more">${more}</div>`:''}
+  ${inhalt||''}
+  ${tips&&tips.length?`<ul class="tips">${tips.map(t=>`<li>${t}</li>`).join('')}</ul>`:''}
+  ${formel?`<div class="formula">${formel}</div>`:''}
+  <div class="actions"><button class="btn" data-share>Mit Familie teilen</button><button class="btn ghost" data-copy>Als Text kopieren</button><span class="msg" data-msg></span></div>
+  <textarea class="hide" data-text>${esc(copyText)}</textarea></div>`;
+}
+let aktuell={seite:'',S:null,titel:''};
+async function kopieren(text,el,ok){ try{await navigator.clipboard.writeText(text);el.textContent=ok||'Kopiert ✓';}catch(e){el.textContent='Bitte Text markieren und kopieren.';} setTimeout(()=>{el.textContent=''},3000); }
+app.addEventListener('click',async e=>{
+  const c=e.target.closest('[data-copy]'), s=e.target.closest('[data-share]'); if(!c&&!s) return;
+  const box=e.target.closest('.answer'), msg=box.querySelector('[data-msg]'), text=box.querySelector('[data-text]').value;
+  if(c) return kopieren(text,msg);
+  const url=teilLink(aktuell.seite,aktuell.S);
+  if(navigator.share){ try{ await navigator.share({title:aktuell.titel,text:text+'\n\nMit unseren Werten zum Anpassen:',url}); return; }catch(err){ if(err&&err.name==='AbortError') return; } }
+  kopieren(text+'\n\nMit unseren Werten zum Anpassen: '+url,msg,'Text und Link kopiert ✓ – jetzt in WhatsApp einfügen');
+});
+// Personen: Kinder zählen als halbe Portion
+const portionen=(erw,kinder)=>erw+kinder*0.5;
+const persTxt=(erw,kinder)=>erw+(erw===1?' Erwachsener':' Erwachsene')+(kinder?' und '+kinder+(kinder===1?' Kind':' Kinder'):'');
+function naechsterHeiligabend(){ const d=new Date(), y=(d.getMonth()===11&&d.getDate()>26)?d.getFullYear()+1:d.getFullYear(); return y+'-12-24'; }
+
+// ================= Startseite =================
+const FRAGEN=[
+ ['braten','🦢','Wie groß muss die Gans sein – und wann muss sie in den Ofen?','Gans, Ente, Pute oder Braten: Gewicht, Garzeit, Zeitplan mit Uhrzeiten'],
+ ['raclette','🧀','Wie viel Käse, Fleisch und Kartoffeln für Raclette?','Einkaufszettel für deine Runde'],
+ ['fondue','🫕','Wie viel Fleisch oder Käse fürs Fondue?','Fett, Brühe oder Käse – mit Mengen für Öl, Brot und Gemüse'],
+ ['kartoffelsalat','🥔','Wie viel Kartoffelsalat und Würstchen?','Der Heiligabend-Klassiker für alle']
+];
+function start(){
+  h(`<h1>Was gibt es bei euch?</h1><p class="sub">Tippe an, was ihr essen wollt – du bekommst Einkaufszettel und Zeitplan in wenigen Schritten.</p>
+  <div class="qlist">${FRAGEN.map(f=>`<button class="q" data-go="${f[0]}"><span class="ic">${f[1]}</span><span><b>${f[2]}</b><span>${f[3]}</span></span></button>`).join('')}</div>`);
+}
+app.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b) location.hash=b.dataset.go;});
+
+// ================= 1) Braten & Geflügel =================
+// pp: kg Rohgewicht je Erwachsenem; min/max: übliche Größe eines Stücks; k/b: Garzeit klassisch = k Min. je kg + b Min.; nt: Niedrigtemperatur Min. je kg
+const ARTEN={
+ gans:{name:'Gans',e:'🦢',pp:0.6,min:3,max:7,k:35,b:30,nt:95,vogel:true,
+   ofen:'Brust nach unten auf den Rost, Fettpfanne mit etwas Wasser darunter; 30 Min. bei 200 °C Ober-/Unterhitze, dann 160 °C',ntOfen:'120 °C Ober-/Unterhitze, Brust nach oben, zum Schluss 20–30 Min. 220 °C',
+   kern:'80–90 °C in der Keule (oder: Keule lässt sich leicht bewegen, Saft läuft klar)',wende:true},
+ ente:{name:'Ente',e:'🦆',pp:0.65,min:1.8,max:3.5,k:45,b:20,nt:100,vogel:true,
+   ofen:'Brust nach unten auf den Rost, Fettpfanne mit etwas Wasser darunter; 20 Min. bei 200 °C Ober-/Unterhitze, dann 160 °C',ntOfen:'120 °C Ober-/Unterhitze, Brust nach oben, zum Schluss 20 Min. 220 °C',
+   kern:'75–80 °C in der Keule',wende:true},
+ pute:{name:'Pute',e:'🦃',pp:0.475,min:3,max:9,k:40,b:0,vogel:true,
+   ofen:'160–170 °C Ober-/Unterhitze, Brust nach oben, nach 1 Std. mit Folie abdecken',
+   kern:'75 °C in der Brust, 80 °C in der Keule',wende:false},
+ schwein:{name:'Krustenbraten',e:'🐖',pp:0.25,min:1,max:4,k:60,b:0,min0:75,vogel:false,
+   ofen:'160 °C Ober-/Unterhitze, die letzten 20–30 Min. 220 °C oder Grill für die Kruste',
+   kern:'70–75 °C',wende:false},
+ rind:{name:'Rinderbraten',e:'🐄',pp:0.25,min:1,max:3,k:30,b:120,vogel:false,
+   ofen:'anbraten, dann im geschlossenen Bräter mit Flüssigkeit bei 160 °C schmoren',
+   kern:'zart, wenn eine Fleischgabel ohne Widerstand herausgleitet (ca. 85–90 °C)',wende:false}
+};
+const HUNGER=[[0.85,'mit Vorspeise / viele Beilagen'],[1,'normal'],[1.25,'großer Hunger / Reste gewünscht']];
+const B={art:'gans',erw:6,kinder:0,hunger:1,gewicht:0,essen:'18:00',tag:naechsterHeiligabend(),tk:0,methode:'klassisch'};
+function braten(p){
+  vorbelegen(B,p); if(!ARTEN[B.art]) B.art='gans';
+  h(`<h2>Wie groß muss es sein – und wann muss es in den Ofen?</h2>
+  <div class="step">Was kommt auf den Tisch?</div>
+  <div class="grid">${Object.entries(ARTEN).map(([k,a])=>`<button class="card${k===B.art?' on':''}" data-art="${k}"><span class="e">${a.e}</span>${a.name}</button>`).join('')}</div>
+  ${slider('be','Erwachsene',1,24,1,B.erw)}
+  ${slider('bk','Kinder (zählen als halbe Portion)',0,12,1,B.kinder)}
+  <div class="step">Wie viel wird gegessen?</div>${pills('bh',HUNGER,B.hunger)}
+  <div class="fields">
+   <label class="field"><span>Essen um</span><input type="time" id="bz" value="${esc(B.essen)}"></label>
+   <label class="field"><span>am</span><input type="date" id="bd" value="${esc(B.tag)}"></label>
+  </div>
+  <div id="bvogel"><div class="step">Gekauft als …</div>${pills('btk',[[0,'frisch'],[1,'tiefgefroren']],B.tk)}</div>
+  <div id="bmeth"><div class="step">Garmethode</div>${pills('bm',[['klassisch','klassisch (ca. 160 °C)'],['nt','Niedrigtemperatur (120 °C, stressfrei)']],B.methode)}</div>
+  <div class="fields"><label class="field"><span>Schon gekauft? Gewicht in kg</span><input type="number" id="bg" inputmode="decimal" step="0.1" min="0" placeholder="z. B. 4,5" value="${B.gewicht||''}"></label></div>
+  <p class="hint">Leer lassen: Der Helfer schlägt die passende Größe vor.</p>
+  <div id="bres"></div>`);
+  const upd=()=>{B.erw=num(be.value);B.kinder=num(bk.value);bev.textContent=B.erw;bkv.textContent=B.kinder;bupd();};
+  be.addEventListener('input',upd); bk.addEventListener('input',upd);
+  pillGroup('bh',v=>{B.hunger=num(v);bupd()}); pillGroup('btk',v=>{B.tk=num(v);bupd()}); pillGroup('bm',v=>{B.methode=v;bupd()});
+  bz.addEventListener('input',()=>{if(bz.value){B.essen=bz.value;bupd()}}); bd.addEventListener('input',()=>{if(bd.value){B.tag=bd.value;bupd()}});
+  bg.addEventListener('input',()=>{B.gewicht=Math.max(0,num(bg.value));bupd()});
+  upd();
+}
+app.addEventListener('click',e=>{const c=e.target.closest('[data-art]');if(!c)return;B.art=c.dataset.art;document.querySelectorAll('[data-art]').forEach(x=>x.classList.toggle('on',x===c));bupd();});
+const rund5=m=>Math.round(m/5)*5;
+function garzeit(a,kgStueck,nt){ if(nt) return rund5(clamp(kgStueck*a.nt,240,600)); return rund5(Math.max(a.min0||0,kgStueck*a.k+a.b)); }
+function bupd(){
+  const a=ARTEN[B.art], nt=B.methode==='nt'&&a.nt, por=portionen(B.erw,B.kinder);
+  bvogel.classList.toggle('hide',!a.vogel); bmeth.classList.toggle('hide',!a.nt);
+  const bedarf=por*a.pp*B.hunger;                       // kg Rohgewicht
+  let stueck,anzahl,eigen=B.gewicht>0;
+  if(eigen){ stueck=B.gewicht; anzahl=1; }
+  else { anzahl=Math.max(1,Math.ceil(bedarf/a.max)); stueck=clamp(Math.ceil(bedarf/anzahl*2)/2,a.min,a.max); }
+  const gesamt=stueck*anzahl, reicht=gesamt/(a.pp*B.hunger);
+  const gz=garzeit(a,stueck,nt), ruhe=15;
+  const essen=new Date(B.tag+'T'+B.essen), ok=!isNaN(essen);
+  const t=min=>new Date(essen.getTime()-min*60000);
+  const raus=ruhe, rein=ruhe+gz, vorheizen=rein+15, kuehl=rein+60;
+  const plan=[];
+  if(B.tk&&a.vogel){ const auftauStd=Math.ceil(stueck*12); plan.push([kuehl+auftauStd*60,`Spätestens jetzt in den Kühlschrank zum Auftauen (ca. ${auftauStd} Std.: rund 24 Std. je 2 kg). Lieber einen halben Tag früher.`,true]); }
+  plan.push([kuehl,`${a.name} aus dem Kühlschrank nehmen${a.vogel?', Innereien raus, waschen, trocken tupfen':''}`]);
+  if(a.vogel&&B.art!=='pute') plan.push([rein+30,`Füllen (Äpfel, Zwiebeln, Beifuß oder Majoran), außen salzen, Keulen zusammenbinden`]);
+  plan.push([vorheizen,`Ofen vorheizen: ${(nt?a.ntOfen:a.ofen).match(/\d+(–\d+)? °C/)[0]}`]);
+  plan.push([rein,`${anzahl>1?anzahl+'× ':''}${a.name} in den Ofen – ${nt?a.ntOfen:a.ofen}`,true]);
+  if(!nt&&(B.art==='gans'||B.art==='ente')) plan.push([rein-(B.art==='gans'?30:20),'Temperatur auf 160 °C runterschalten']);
+  if(a.wende&&!nt&&gz>=120) plan.push([ruhe+rund5(gz/2),'Wenden (Brust nach oben), austretendes Fett abschöpfen – ergibt später die Soße']);
+  plan.push([ruhe+30,`Kerntemperatur prüfen: ${a.kern}`]);
+  if(a.vogel&&B.art!=='pute') plan.push([ruhe+(nt?25:15),nt?'Auf 220 °C hochschalten, Haut mit Salzwasser bestreichen – wird knusprig':'Haut mit Salzwasser bestreichen, 220 °C oder Grill – wird knusprig']);
+  plan.push([25,'Klöße ins siedende Wasser (ca. 20 Min. ziehen lassen), Rotkohl erwärmen']);
+  plan.push([raus,`Aus dem Ofen, 10–15 Min. ruhen lassen. Jetzt den Bratensaft entfetten und zur Soße abschmecken`,true]);
+  plan.push([0,'Essen! Tranchieren und servieren 🎄',true]);
+  plan.sort((x,y)=>y[0]-x[0]);
+  const planHtml=ok?`<div class="h3">Zeitplan</div><ul class="plan">${plan.map(r=>{const d=t(r[0]);return `<li class="${r[2]?'hl':''}"><span class="t">${uhr(d)}<small>${tagTxt(d)}</small></span><span>${r[1]}</span></li>`}).join('')}</ul>`:'';
+  const klosse=Math.ceil(B.erw*2+B.kinder);
+  const einkauf=[
+    [`${a.name}${anzahl>1?' ('+anzahl+' Stück)':''}`, anzahl>1?anzahl+' × '+kg(stueck):kg(stueck)],
+    ['Klöße (2 je Erwachsenem, 1 je Kind)', klosse+' Stück'],
+    ['Rotkohl oder anderes Gemüse', gramm(por*250)],
+  ];
+  if(a.vogel&&B.art!=='pute') einkauf.push(['Füllung: Äpfel / Zwiebeln',Math.ceil(gesamt)+' / '+Math.ceil(gesamt/2)+' Stück']);
+  let cls='',say,more;
+  const zeitTxt=nt?`${dauer(gz)} bei Niedrigtemperatur`:`${dauer(gz)} im Ofen`;
+  if(eigen){
+    const diff=reicht-por;
+    cls=diff<-0.5?'warn':'ok';
+    say=diff<-0.5?`Knapp: ${kg(stueck)} reichen für etwa ${fmt(reicht)} Erwachsene.`:`${kg(stueck)} reichen für etwa ${fmt(reicht)} Erwachsene – passt.`;
+    more=`Ihr seid ${persTxt(B.erw,B.kinder)}. Garzeit: <b>${zeitTxt}</b>${ok?`, also <b>um ${uhr(t(rein))} Uhr in den Ofen</b> für ${B.essen} Uhr`:''}.${diff<-0.5?' Mehr Beilagen oder eine Vorspeise gleichen das aus.':''}`;
+  } else {
+    say=anzahl>1?`Nehmt ${anzahl} × ${a.name} à ${kg(stueck)}.`:`Nehmt eine ${a.name.split(' ')[0]} mit etwa ${kg(stueck)}.`;
+    if(!a.vogel) say=`Kauft etwa ${kg(gesamt)} ${a.name.split(' ')[0]}.`;
+    more=`Für ${persTxt(B.erw,B.kinder)}. Garzeit: <b>${zeitTxt}</b>${ok?` – <b>um ${uhr(t(rein))} Uhr in den Ofen</b>, damit ihr um ${B.essen} Uhr esst`:''}.`;
+  }
+  const tips=[];
+  if(anzahl>1) tips.push(`Ein einzelnes Stück über ${kg(a.max)} ist unüblich und passt selten in den Ofen. Zwei Stücke garen gleichzeitig etwa gleich lang – auf zwei Schienen, nach der Hälfte tauschen.`);
+  if(B.art==='pute'&&stueck>6) tips.push('Eine Pute über 6 kg passt in viele Backöfen nicht hinein – vorher den Bräter samt Vogel ausmessen.');
+  if(a.vogel) tips.push(`Die Faustregeln widersprechen sich (½ bis 1 Std. je kg), weil die Ofentemperatur verschieden ist. Sicher ist nur die Kerntemperatur: ${a.kern}.`);
+  if(nt) tips.push('Niedrigtemperatur verzeiht Verspätung: Kommen die Gäste später, einfach bei 80 °C warmhalten.');
+  if(B.tk&&a.vogel) tips.push('Nie bei Zimmertemperatur auftauen – im Kühlschrank, in einer Schale, weil Tauwasser austritt.');
+  if(a.vogel&&B.art!=='pute') tips.push('Das ausgebratene Fett aufheben: Gänse- und Entenschmalz hält im Kühlschrank Wochen.');
+  const copy=`${a.name} für ${persTxt(B.erw,B.kinder)}: ${anzahl>1?anzahl+' × '+kg(stueck):kg(stueck)} (reicht für ca. ${fmt(reicht)} Erwachsene). Garzeit ${zeitTxt} (${nt?a.ntOfen:a.ofen}), Kerntemperatur ${a.kern}.\n`+
+    (ok?'Zeitplan:\n'+plan.map(r=>{const d=t(r[0]);return `${tagTxt(d)} ${uhr(d)} – ${r[1].replace(/<[^>]+>/g,'')}`}).join('\n')+'\n':'')+
+    'Einkauf: '+einkauf.map(r=>r[0]+': '+r[1]).join('; ');
+  aktuell={seite:'braten',S:B,titel:a.name+' – Zeitplan'};
+  bres.innerHTML=antwortBox(cls,`Antwort · ${a.name}`,say,more,planHtml+`<div class="h3">Einkaufszettel</div>`+liste(einkauf),tips,copy,
+    `Rechnung: ${fmt(por,por%1?1:0)} Portionen × ${fmt(a.pp*1000)} g Rohgewicht je Erwachsenem${B.hunger!==1?' × '+fmt(B.hunger,2):''} = ${kg(Math.round(bedarf*10)/10)}. Garzeit ${nt?`Niedrigtemperatur: ${a.nt} Min. je kg (4–10 Std.)`:`${a.k} Min. je kg${a.b?' + '+a.b+' Min.':''}`} = ${dauer(gz)}, danach 15 Min. Ruhe. Richtwerte – jeder Ofen heizt anders.`);
+  hashSetzen('braten',B);
+}
+
+// ================= 2) Raclette =================
+const AUSWAHL=[['wenig','wenig Beilagen'],['normal','normal'],['viel','viel Auswahl']];
+const R={erw:6,kinder:0,auswahl:'normal',ohnefleisch:0};
+function raclette(p){
+  vorbelegen(R,p);
+  h(`<h2>Wie viel braucht ihr für Raclette?</h2>
+  ${slider('re','Erwachsene',1,24,1,R.erw)}
+  ${slider('rk','Kinder (zählen als halbe Portion)',0,12,1,R.kinder)}
+  <div class="step">Wie viel steht sonst auf dem Tisch?</div>${pills('ra',AUSWAHL,R.auswahl)}
+  ${slider('rv','Davon essen kein Fleisch',0,24,1,R.ohnefleisch)}
+  <div id="rres"></div>`);
+  const upd=()=>{R.erw=num(re.value);R.kinder=num(rk.value);rv.max=R.erw+R.kinder;R.ohnefleisch=Math.min(num(rv.value),R.erw+R.kinder);rev.textContent=R.erw;rkv.textContent=R.kinder;rvv.textContent=R.ohnefleisch;rupd();};
+  [re,rk,rv].forEach(el=>el.addEventListener('input',upd)); pillGroup('ra',v=>{R.auswahl=v;rupd()}); upd();
+}
+function rupd(){
+  const por=portionen(R.erw,R.kinder), i={wenig:0,normal:1,viel:2}[R.auswahl]??1;
+  const kaese=[250,200,150][i], kart=[250,200,150][i], fleisch=[200,150,120][i], gem=[150,200,250][i];
+  const anteilFleisch=Math.max(0,(R.erw+R.kinder-R.ohnefleisch))/Math.max(1,R.erw+R.kinder);
+  const gK=por*kaese, gF=por*anteilFleisch*fleisch, geraete=Math.ceil((R.erw+R.kinder)/8);
+  const rows=[['Raclettekäse',gramm(gK)+` (≈ ${Math.ceil(gK/400)} × 400-g-Packung)`],['Kartoffeln, klein und festkochend',gramm(por*kart)],
+    ['Gemüse, Pilze, Mais, Ananas …',gramm(por*gem)]];
+  if(gF>0) rows.splice(1,0,['Fleisch, Schinken, Würstchen',gramm(gF)]);
+  rows.push(['Gewürzgurken, Silberzwiebeln, Brot, Dips','nach Geschmack']);
+  const say=`${gramm(gK)} Käse, ${gramm(por*kart)} Kartoffeln${gF>0?' und '+gramm(gF)+' Fleisch':''}.`;
+  const more=`Für ${persTxt(R.erw,R.kinder)}${R.ohnefleisch?`, davon ${R.ohnefleisch} ohne Fleisch`:''}. Bei mehr als 8 Leuten braucht ihr <b>${geraete} Geräte</b> (meist 8 Pfännchen je Gerät).`;
+  const tips=['Käse 20–30 Minuten vorher aus dem Kühlschrank nehmen – dann schmilzt er gleichmäßig. Rinde abschaben, nicht abschneiden.','Übriger Raclettekäse lässt sich gut einfrieren und später überbacken.'];
+  if(geraete>1) tips.push(`Zwei Raclette-Geräte (je 1.200–2.000 Watt) möglichst an zwei verschiedene Wandsteckdosen hängen, nicht an eine Mehrfachsteckdose – nachrechnen im <a href="https://schrauberbits.github.io/watt-helfer/#steckdose">Watt-Helfer</a>.`);
+  const copy=`Raclette für ${persTxt(R.erw,R.kinder)} (${AUSWAHL[i][1]}): `+rows.map(r=>r[0]+': '+r[1]).join('; ')+(geraete>1?`. ${geraete} Geräte nötig.`:'.');
+  aktuell={seite:'raclette',S:R,titel:'Raclette – Einkaufszettel'};
+  rres.innerHTML=antwortBox('ok','Einkaufszettel',say,more,liste(rows),tips,copy,`Je Erwachsenem: ${kaese} g Käse, ${kart} g Kartoffeln, ${fleisch} g Fleisch, ${gem} g Gemüse; Kinder halbe Portion. Übliche Faustregel: 150–250 g Käse – je mehr Auswahl, desto weniger.`);
+  hashSetzen('raclette',R);
+}
+
+// ================= 3) Fondue =================
+const F={art:'fleisch',erw:6,kinder:0,auswahl:'normal'};
+function fondue(p){
+  vorbelegen(F,p); if(!['fleisch','bruehe','kaese'].includes(F.art)) F.art='fleisch';
+  h(`<h2>Wie viel braucht ihr fürs Fondue?</h2>
+  <div class="step">Welches Fondue?</div>${pills('fa',[['fleisch','Fleisch in Fett'],['bruehe','Fleisch in Brühe'],['kaese','Käsefondue']],F.art)}
+  ${slider('fe','Erwachsene',1,24,1,F.erw)}
+  ${slider('fk','Kinder (zählen als halbe Portion)',0,12,1,F.kinder)}
+  <div class="step">Wie viel steht sonst auf dem Tisch?</div>${pills('fb',AUSWAHL,F.auswahl)}
+  <div id="fres"></div>`);
+  const upd=()=>{F.erw=num(fe.value);F.kinder=num(fk.value);fev.textContent=F.erw;fkv.textContent=F.kinder;fupd();};
+  [fe,fk].forEach(el=>el.addEventListener('input',upd)); pillGroup('fa',v=>{F.art=v;fupd()}); pillGroup('fb',v=>{F.auswahl=v;fupd()}); upd();
+}
+function fupd(){
+  const por=portionen(F.erw,F.kinder), i={wenig:0,normal:1,viel:2}[F.auswahl]??1, leute=F.erw+F.kinder;
+  let rows,say,more,tips,formel;
+  if(F.art==='kaese'){
+    const k=[250,200,150][i], gK=por*k, toepfe=Math.ceil(leute/6);
+    rows=[['Fonduekäse (z. B. Gruyère, Emmentaler, Appenzeller)',gramm(gK)],['Brot vom Vortag, in Würfeln',gramm(por*200)],
+      ['Trockener Weißwein (ca. 1 dl je 200 g Käse)',fmt(Math.ceil(gK/200)*0.1,1)+' l'],['Speisestärke, Knoblauch, Muskat','1 TL Stärke je 200 g Käse'],
+      ['Kartoffeln, Gemüse, Obst zum Dippen',gramm(por*150)]];
+    say=`${gramm(gK)} Käse und ${gramm(por*200)} Brot.`;
+    more=`Für ${persTxt(F.erw,F.kinder)}. Ein Caquelon reicht für etwa 6 Personen – ihr braucht <b>${toepfe} ${toepfe>1?'Töpfe':'Topf'}</b>.`;
+    tips=['Den Käse grob reiben und nach und nach in den heißen Wein rühren – nicht kochen lassen, sonst wird er fädig.','Bleibt ein Rest im Topf, wird daraus die Kruste („Grossmutter“) – die gilt als bester Teil.'];
+    formel=`Je Erwachsenem ${k} g Käse und 200 g Brot, Kinder halbe Portion. Übliche Faustregel: 200–250 g Käse je Person als Hauptgericht.`;
+  } else {
+    const f=[250,200,150][i], gF=por*f, toepfe=Math.ceil(leute/6), fett=F.art==='fleisch';
+    rows=[['Fleisch (Rind, Schwein, Pute), mundgerecht',gramm(gF)],[fett?'Öl oder Fondue-Fett (1 l je Topf)':'Brühe (1 l je Topf, Reserve zum Nachgießen)',(fett?toepfe:toepfe*1.5)+' l'],
+      ['Gemüse und Pilze',gramm(por*150)],['Baguette und 3–4 Dips','nach Geschmack']];
+    say=`${gramm(gF)} Fleisch und ${fett?toepfe+' l Öl':fmt(toepfe*1.5,1)+' l Brühe'}.`;
+    more=`Für ${persTxt(F.erw,F.kinder)}. Ein Topf reicht für etwa 6 Personen – ihr braucht <b>${toepfe} ${toepfe>1?'Töpfe':'Topf'}</b>.`;
+    tips=fett?['Fett nur bis zur Hälfte füllen, auf dem Herd auf ca. 180 °C erhitzen (ein Holzstäbchen bildet Bläschen), dann aufs Rechaud.','Brennendes Fett nie mit Wasser löschen – Deckel drauf.']:['Fondue in Brühe ist leichter und spritzt nicht. Die Brühe am Ende als Suppe essen.'];
+    tips.push('Rohes Fleisch auf eigenen Tellern, mit eigener Gabel – nicht mit der Fonduegabel essen.');
+    formel=`Je Erwachsenem ${f} g Fleisch und 150 g Gemüse, Kinder halbe Portion; 1 l ${fett?'Öl':'Brühe'} reicht etwa für 6 Personen. Übliche Faustregel: 150–250 g Fleisch, je nach Beilagen.`;
+  }
+  const name={fleisch:'Fleischfondue',bruehe:'Fondue chinoise',kaese:'Käsefondue'}[F.art];
+  const copy=`${name} für ${persTxt(F.erw,F.kinder)} (${AUSWAHL[i][1]}): `+rows.map(r=>r[0]+': '+r[1]).join('; ')+'.';
+  aktuell={seite:'fondue',S:F,titel:name+' – Einkaufszettel'};
+  fres.innerHTML=antwortBox('ok','Einkaufszettel · '+name,say,more,liste(rows),tips,copy,formel);
+  hashSetzen('fondue',F);
+}
+
+// ================= 4) Kartoffelsalat & Würstchen =================
+const K={erw:6,kinder:0,hunger:1};
+function kartoffelsalat(p){
+  vorbelegen(K,p);
+  h(`<h2>Wie viel Kartoffelsalat und Würstchen?</h2>
+  ${slider('ke','Erwachsene',1,30,1,K.erw)}
+  ${slider('kk','Kinder',0,15,1,K.kinder)}
+  <div class="step">Wie viel wird gegessen?</div>${pills('kh',HUNGER,K.hunger)}
+  <div id="kres"></div>`);
+  const upd=()=>{K.erw=num(ke.value);K.kinder=num(kk.value);kev.textContent=K.erw;kkv.textContent=K.kinder;kupd();};
+  [ke,kk].forEach(el=>el.addEventListener('input',upd)); pillGroup('kh',v=>{K.hunger=num(v);kupd()}); upd();
+}
+function kupd(){
+  const por=portionen(K.erw,K.kinder), kart=por*250*K.hunger, kgK=Math.ceil(kart/500)/2;
+  const wurst=Math.ceil(K.erw*(K.hunger>1?3:2)+K.kinder);
+  const rows=[['Kartoffeln, festkochend (roh gewogen)',kg(kgK)],['Würstchen (Wiener, Bockwurst …)',wurst+' Stück'],
+    ['Für die Brühe-Variante: Gemüsebrühe',fmt(Math.round(kgK*150))+' ml'],['… Zwiebeln (klein)',Math.ceil(kgK)+' Stück'],['… Essig / Öl',fmt(Math.ceil(kgK*3.5))+' EL / '+fmt(Math.ceil(kgK*4))+' EL']];
+  const say=`${kg(kgK)} Kartoffeln und ${wurst} Würstchen.`;
+  const more=`Für ${persTxt(K.erw,K.kinder)}: je Erwachsenem ${fmt(250*K.hunger)} g Kartoffeln und ${K.hunger>1?3:2} Würstchen (1 Paar${K.hunger>1?' plus eins':''}), Kinder die Hälfte.`;
+  const tips=['Am Vorabend zubereiten – Kartoffelsalat schmeckt besser, wenn er einige Stunden durchzieht. An Heiligabend nur noch die Würstchen erwärmen.','Würstchen nicht kochen, sondern 8–10 Minuten in heißem, nicht mehr sprudelndem Wasser ziehen lassen – sonst platzen sie.','Kartoffeln in der Schale kochen und noch warm mit der heißen Brühe mischen – dann saugen sie sie auf.'];
+  const copy=`Kartoffelsalat mit Würstchen für ${persTxt(K.erw,K.kinder)}: `+rows.map(r=>r[0]+': '+r[1]).join('; ')+'.';
+  aktuell={seite:'kartoffelsalat',S:K,titel:'Kartoffelsalat – Einkaufszettel'};
+  kres.innerHTML=antwortBox('ok','Einkaufszettel',say,more,liste(rows),tips,copy,'Rechnung: 250 g rohe Kartoffeln je Erwachsenem als Hauptgericht, auf ½ kg aufgerundet; Brühe-Variante je kg Kartoffeln 150 ml Brühe, 1 kleine Zwiebel, 3–4 EL Essig, 4 EL Öl.');
+  hashSetzen('kartoffelsalat',K);
+}
+
+// ================= Navigation =================
+const SEITEN={braten,raclette,fondue,kartoffelsalat};
+function route(){
+  const {seite,p}=hashTeile();
+  document.getElementById('back').classList.toggle('hide',!SEITEN[seite]);
+  (SEITEN[seite]||start)(p);
+}
+document.getElementById('home').onclick=()=>{history.replaceState(null,'',location.pathname+location.search);route();};
+document.getElementById('back').onclick=()=>{history.replaceState(null,'',location.pathname+location.search);route();};
+window.addEventListener('hashchange',route);
+route();
+</script>
+</body>
+</html>
